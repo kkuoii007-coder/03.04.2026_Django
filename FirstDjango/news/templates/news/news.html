@@ -1,18 +1,35 @@
 {% extends "base.html" %}
-
 {% block title %}Новостная страница{% endblock %}
-
 {% block content %}
-<h1>Новостная страница</h1>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4 text-center">Новостная страница</h1>
+    </div>
+  </div>
 
-{% for new in news %}
-	<div>
-		<h2> {{ new.title }} </h2>
-		<p> {{ new.short_description }} </p>
-        <p> {{ new.name_author }} </p>
-        <h3> {{ new.text }} </h3>
-        <p> {{ new.pub_date }} </p>
-	</div>
-{% endfor %}
-
+  {% if news %}
+    <div class="row g-4">
+      {% for new in news %}
+        <div class="col-lg-6 col-xl-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title h4 mb-3">{{ new.title }}</h2>
+              <p class="card-text">{{ new.short_description }}</p>
+              <p class="text-muted mb-2">{{ new.name_author }}</p>
+              <h3 class="h5 text-primary mb-3">{{ new.text|truncatewords:50 }}</h3>
+              <p class="text-muted small">{{ new.pub_date }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="alert alert-info text-center">
+          <h4>Новостей нет</h4>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}
