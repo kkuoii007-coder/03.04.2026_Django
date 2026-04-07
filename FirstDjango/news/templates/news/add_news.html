@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Предложить новость{% endblock %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8 col-xl-6">
+      <h1 class="mb-5 text-center">Предложить новость</h1>
+
+      <div class="card shadow-sm h-100">
+        <div class="card-body p-4">
+          <form method="post">
+            {% csrf_token %}
+
+            <div class="row g-4">
+              <div class="col-12">
+                <label for="id_title" class="form-label">Заголовок новости</label>
+                <input type="text" class="form-control" id="id_title" name="title" placeholder="Введите заголовок новости" required>
+              </div>
+
+              <div class="col-12">
+                <label for="id_short_description" class="form-label">Краткое описание</label>
+                <input type="text" class="form-control" id="id_short_description" name="short_description" placeholder="Краткое описание новости" required>
+              </div>
+
+              <div class="col-12">
+                <label for="id_name_author" class="form-label">Имя автора</label>
+                <input type="text" class="form-control" id="id_name_author" name="name_author" placeholder="Ваше имя" required>
+              </div>
+
+              <div class="col-12">
+                <label for="id_text" class="form-label">Полное содержание</label>
+                <textarea class="form-control" id="id_text" name="text" rows="8" placeholder="Введите полное содержание новости" required></textarea>
+              </div>
+
+              <div class="col-md-6">
+                <label for="id_pub_date" class="form-label">Дата публикации</label>
+                <input type="date" class="form-control" id="id_pub_date" name="pub_date" required>
+              </div>
+
+              <div class="col-md-6">
+                <label for="id_pub_time" class="form-label">Время публикации</label>
+                <input type="time" class="form-control" id="id_pub_time" name="pub_time" required>
+              </div>
+            </div>
+
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-primary btn-lg">Добавить новость</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
