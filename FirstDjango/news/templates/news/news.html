@@ -3,9 +3,16 @@
 {% block title %}Новостная страница{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-lg-8 mx-auto">
-        <h1 class="display-4 text-center mb-5">Новости LLM</h1>
-    </div>
-</div>
+<h1>Новостная страница</h1>
+
+{% for new in news %}
+	<div>
+		<h2> {{ new.title }} </h2>
+		<p> {{ new.short_description }} </p>
+        <p> {{ new.name_author }} </p>
+        <h3> {{ new.text }} </h3>
+        <p> {{ new.pub_date }} </p>
+	</div>
+{% endfor %}
+
 {% endblock %}
